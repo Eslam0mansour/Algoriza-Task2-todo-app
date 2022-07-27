@@ -62,19 +62,31 @@ class Schedule extends StatelessWidget {
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
                   onDateChange: (date) {
-                     AppCubit.get(context).selected = date  ;
-
+                    AppCubit.get(context).updateDay(date);
+                    print(date);
                   },
                 ),
-                Row(
-                  children: const [
-                    Text(
-                      '',
-                      style: TextStyle(
-                        fontSize: 20
+                Container(
+                  padding: EdgeInsets.all(15),
+                  height: 60,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        DateFormat.EEEE().format(AppCubit.get(context).today),
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18)
+                        ,),
+                      Text(
+                        DateFormat.yMMMd().format(AppCubit.get(context).today),
+                        style: const TextStyle(
+                            fontSize: 16
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+
                 ),
                 const SizedBox(
                   height: 20,
@@ -82,7 +94,7 @@ class Schedule extends StatelessWidget {
              ListView.separated(
                shrinkWrap: true,
                itemBuilder: (context, index) => ItemTask(
-                 tasks[index],
+                    tasks[index],
                  clr: myColorss[Random().nextInt(myColorss.length)],),
                separatorBuilder: (context, index) => Container(
                  width: double.infinity,

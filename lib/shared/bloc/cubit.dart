@@ -11,12 +11,12 @@ class AppCubit extends Cubit<AppStates>
   AppCubit() : super (AppInitialState());
   static AppCubit get(context) => BlocProvider.of(context);
   DateTime selected = DateTime.now();
+  DateTime today = DateTime.now();
 
   List<Map> alltasks = [];
    List<Map> donetasks = [];
    List<Map> undonetasks = [];
    List<Map> favtasks = [];
-
    late Database db ;
 
 void CreateData () {
@@ -89,6 +89,8 @@ void getdata (database)async
      }
 
     });
+
+
     emit(AppGetDateState());
 
   });
@@ -117,6 +119,11 @@ void deletitem ({
     emit(AppdeletDateState());
   });
 }
+  void updateDay(DateTime date){
+   today=date;
+    emit(updateSelctedDay());
+
+  }
 
 
 }
