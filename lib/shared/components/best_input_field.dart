@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BestInputField extends StatelessWidget {
   final String title;
   final String hint;
-  TextEditingController? controller;
+  TextEditingController controller;
   final Widget? widget;
   final double? width;
   var validate;
@@ -11,7 +11,7 @@ class BestInputField extends StatelessWidget {
      required Function validate,
   required this.title,
   required this.hint,
-  this.controller,
+  required this.controller,
   this.widget,
     this.width,
   }) : super(key: key);
@@ -47,7 +47,7 @@ class BestInputField extends StatelessWidget {
                 Expanded(
                   child: TextFormField(
                     onChanged: (value){
-                      controller = value as TextEditingController?;
+                      controller = value as TextEditingController;
                     },
                     validator: (value) =>
                     value!.isEmpty ? 'empty' : null,

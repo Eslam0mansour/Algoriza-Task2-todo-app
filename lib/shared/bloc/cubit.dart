@@ -10,13 +10,13 @@ class AppCubit extends Cubit<AppStates>
 {
   AppCubit() : super (AppInitialState());
   static AppCubit get(context) => BlocProvider.of(context);
-  DateTime selected = DateTime.now();
-  DateTime today = DateTime.now();
+   DateTime today = DateTime.now();
 
   List<Map> alltasks = [];
    List<Map> donetasks = [];
    List<Map> undonetasks = [];
    List<Map> favtasks = [];
+   List<Map> schd = [];
    late Database db ;
 
 void CreateData () {
@@ -77,9 +77,6 @@ void getdata (database)async
     database.rawQuery('SELECT * FROM tasks').then((value) {
     alltasks = value ;
     value.forEach((element) {
-      if ((element['date'].toString() == selected.toString())){
-        print (selected.toString());
-      }
      if (element['status'] == 'done') {
        donetasks.add(element);
      } else if (element['status'] == 'undone') {
@@ -87,6 +84,7 @@ void getdata (database)async
      } else {
        favtasks.add(element);
      }
+     schd=alltasks.where((h1) =>h1['date']==formatter.format(today)).toList();
 
     });
 
@@ -119,9 +117,14 @@ void deletitem ({
     emit(AppdeletDateState());
   });
 }
-  void updateDay(DateTime date){
-   today=date;
+  final DateFormat formatter = DateFormat('yyyy-MM-dd');
+
+  void updateTIMELINE(DateTime date){
+    schd=alltasks.where((h1) =>h1['date']==formatter.format(date)).toList();
+    today = date;
+   print('to day is $today ');
     emit(updateSelctedDay());
+   emit(AppGetDateState());
 
   }
 

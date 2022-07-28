@@ -72,7 +72,7 @@ class ItemTask extends StatelessWidget {
                     },
                     icon: Icon(
                       Icons.delete_forever_outlined,
-                      color: Colors.red,
+                      color: Colors.grey[600],
                     ),
                   ),
                 ],

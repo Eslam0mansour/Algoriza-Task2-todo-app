@@ -101,7 +101,8 @@ class _AddtaskState extends State<Addtask> {
                                 firstDate: DateTime.now(),
                                 lastDate: DateTime(2030),
                             ).then((value) {
-                              dateController.text = DateFormat.yMMMd().format(value!);
+                              final DateFormat formatter = DateFormat('yyyy-MM-dd');
+                              dateController.text = formatter.format(value!);
                               print(value.toString());
                             });
                           },
@@ -171,7 +172,12 @@ class _AddtaskState extends State<Addtask> {
                         child: MaterialButton(
                           onPressed: (){
                             if (_formKeya.currentState!.validate()) {
-                            cubit.insertData(title: titleController.text, date: dateController.text, start: startController.text, end: endController.text);
+                            cubit.insertData(
+                                title: titleController.text,
+                                date: dateController.text,
+                                start: startController.text,
+                                end: endController.text
+                            );
                             Navigator.pop(context);
                             }
                             else

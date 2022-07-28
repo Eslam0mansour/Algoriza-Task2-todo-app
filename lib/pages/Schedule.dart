@@ -17,7 +17,7 @@ class Schedule extends StatelessWidget {
     return BlocConsumer<AppCubit , AppStates>(
         listener: (BuildContext context,AppStates state) {},
          builder: (BuildContext context,AppStates state) {
-           var tasks = AppCubit.get(context).alltasks;
+           var tasks = AppCubit.get(context).schd;
           List<Color> myColorss = [
             Colors.red,
             Colors.green,
@@ -62,8 +62,8 @@ class Schedule extends StatelessWidget {
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
                   onDateChange: (date) {
-                    AppCubit.get(context).updateDay(date);
-                    print(date);
+                    AppCubit.get(context).updateTIMELINE(date);
+
                   },
                 ),
                 Container(
@@ -72,18 +72,18 @@ class Schedule extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        DateFormat.EEEE().format(AppCubit.get(context).today),
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18)
-                        ,),
-                      Text(
-                        DateFormat.yMMMd().format(AppCubit.get(context).today),
-                        style: const TextStyle(
-                            fontSize: 16
-                        ),
-                      ),
+                      // Text(
+                      //   DateFormat.EEEE().format(AppCubit.get(context).today),
+                      //   style: const TextStyle(
+                      //       fontWeight: FontWeight.bold,
+                      //       fontSize: 18)
+                      //   ,),
+                      // Text(
+                      //   DateFormat.yMMMd().format(AppCubit.get(context).today),
+                      //   style: const TextStyle(
+                      //       fontSize: 16
+                      //   ),
+                      // ),
                     ],
                   ),
 
