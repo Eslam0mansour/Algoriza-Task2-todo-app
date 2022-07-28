@@ -20,7 +20,7 @@ class _AddtaskState extends State<Addtask> {
   final dateController = TextEditingController();
   final startController = TextEditingController();
   final endController = TextEditingController();
-  final remindController = TextEditingController();
+  var remindController = TextEditingController();
   final _formKeya = GlobalKey<FormState>();
 
   @override
@@ -190,7 +190,9 @@ class _AddtaskState extends State<Addtask> {
                               DropdownMenuItem(value: "30 min before",child: Text('30 min before'),),
                               DropdownMenuItem(value: "10 min before",child: Text('10 min before'),),
                             ],
-                            onChanged: (String? value) { value; },
+                            onChanged: (String? value) {
+                              remindController.text = value! ;
+                              },
 
                           ),
                         ),
