@@ -1,7 +1,6 @@
 # algoriza_task2_todo_list_app    VIDEO HERE 
 
-Uploading Android Emulator - Pixel_5_API_29_5554 2022-07-28 15-13-16.mp4…
-
+https://user-images.githubusercontent.com/101331596/181514219-666f7277-3a38-42ca-b205-afea9bc8df2d.mp4
 
 
 ## Getting Started
