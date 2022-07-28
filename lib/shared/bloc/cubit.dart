@@ -71,6 +71,7 @@ void CreateData () {
 void getdata (database)async
 
 {
+  schd.clear();
   donetasks.clear();
   undonetasks.clear();
   favtasks.clear();
@@ -84,10 +85,8 @@ void getdata (database)async
      } else {
        favtasks.add(element);
      }
-     schd=alltasks.where((h1) =>h1['date']==formatter.format(today)).toList();
 
     });
-
 
     emit(AppGetDateState());
 
@@ -125,7 +124,6 @@ void deletitem ({
    print('to day is $today ');
     emit(updateSelctedDay());
    emit(AppGetDateState());
-
   }
 
 

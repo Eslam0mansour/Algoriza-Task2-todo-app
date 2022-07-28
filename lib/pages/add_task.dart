@@ -1,6 +1,7 @@
 import 'package:algoriza_task2_todo_list_app/shared/bloc/cubit.dart';
 import 'package:algoriza_task2_todo_list_app/shared/bloc/states.dart';
 import 'package:algoriza_task2_todo_list_app/shared/components/best_input_field.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +20,7 @@ class _AddtaskState extends State<Addtask> {
   final dateController = TextEditingController();
   final startController = TextEditingController();
   final endController = TextEditingController();
+  final remindController = TextEditingController();
   final _formKeya = GlobalKey<FormState>();
 
   @override
@@ -166,6 +168,32 @@ class _AddtaskState extends State<Addtask> {
                                 )),
                           ),
                         ],
+                      ),
+                      BestInputField(
+                          validate: (String value){
+                            if(value.isEmpty)
+                            {
+                              return 'empty';
+                            }
+                            return null;
+                          },
+                          title: 'Remind',
+                          hint: 'Remind',
+                          controller: remindController,
+                        widget:DropdownButtonHideUnderline(
+                          child: DropdownButton2(
+                            buttonHeight: 30,
+                            buttonWidth: 200,
+                            items: const [
+                              DropdownMenuItem(value: "1 day before",child: Text('1 day before'),),
+                              DropdownMenuItem(value: "1 hour before",child: Text('1 hour before'),),
+                              DropdownMenuItem(value: "30 min before",child: Text('30 min before'),),
+                              DropdownMenuItem(value: "10 min before",child: Text('10 min before'),),
+                            ],
+                            onChanged: (String? value) { value; },
+
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(20),

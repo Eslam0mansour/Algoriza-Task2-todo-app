@@ -58,12 +58,10 @@ class Schedule extends StatelessWidget {
                 DatePicker(
                   DateTime.now(),
                   initialSelectedDate: DateTime.now(),
-
                   selectionColor: Colors.black,
                   selectedTextColor: Colors.white,
                   onDateChange: (date) {
                     AppCubit.get(context).updateTIMELINE(date);
-
                   },
                 ),
                 Container(
