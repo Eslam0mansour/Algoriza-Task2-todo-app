@@ -20,15 +20,16 @@ class AppCubit extends Cubit<AppStates>
    late Database db ;
 
 void CreateData () {
+
       openDatabase(
     'todo.dp',
-    version: 1,
+    version: 2,
     onCreate: (Database db, version)
        {
 
 
         print('crated');
-        db.execute('CREATE TABLE tasks (id INTEGER PRIMARY KEY , title TEXT , date TEXT , start TEXT , end TEXT , status TEXT)')
+        db.execute('CREATE TABLE tasks (id INTEGER PRIMARY KEY , title TEXT , date TEXT , start TEXT , end TEXT , remind TEXT,  status TEXT )')
             .then((value) {print('created table ');} );
       },
       onOpen: (Database db )
@@ -50,14 +51,16 @@ void CreateData () {
        required title,
        required date ,
        required start ,
-       required end }
+       required end ,
+       required remind ,
+     }
      )
  async
 {
  await db.transaction((txn)
 {
   txn.rawInsert(
-      'INSERT INTO tasks (title , date , start , end, status ) VALUES("$title" , "$date","$start","$end", "undone")'
+      'INSERT INTO tasks (title , date , start , end, remind ,status ) VALUES("$title" , "$date","$start","$end","$remind", "undone")'
   ).then((value)
   {
     print('$value inserted');
